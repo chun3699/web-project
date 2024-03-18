@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.container{
+    height: 100vh;
+    background-color: rgb(119, 132, 252);
+    // background: url('https://cdn.pixabay.com/photo/2016/10/21/14/50/plouzane-1758197_1280.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+}
+.box{
+    position: relative;
+    // background: rgb(233, 112, 112);
+    background: rgb(255, 255, 255,0.3);
+    // background: transparent;
+    // backdrop-filter: blur(20px);
+    border: solid 2px white;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+// กรอบรูป
+.item{
+    width: auto;
+    height: auto;
+    background: rgba(104, 104, 104, 0.3);
+    border: solid 3px rgb(24, 45, 59);
+    border-radius: 10px;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    cursor: pointer;
+    
+}
+.item:hover{
+    transform: scale(1.05);
+}
+//รูปภาพ
+.box img{
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    max-width: 1rf;
+    border-radius: 10px;
+    transition: transform 0.3s ease; 
+}
+//คะแนน
+.scors{
+    display: flex;
+    align-items: center;
+    background: bisque;
+    width: 90px;
+    border-radius: 10px;
+    padding: 5px;
+    color: red;
+}
+
+.scors mat-icon{
+    color: red;
+    border-radius: 50%;
+    font-size: 25px;
+    margin-right: 10px;
+}
