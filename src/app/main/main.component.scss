@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+.container{
+    display: grid;
+    height: 100vh;
+    background-color: antiquewhite; 
+}
+.mat-toolbar.mat-primary {
+    --mat-toolbar-container-background-color: #72093d;
+    --mat-toolbar-container-text-color: rgb(233, 213, 213);
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    // margin-top: -200px;
+}
+.tabal{
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    align-items: center;
+    background-color: rgb(133, 25, 84);
+    height: 50px;
+    gap :20px;
+    padding: 20px;
+    border-radius: 40px;
+}
+
+.user-text h1{
+    font-weight: 500;
+    padding: 10px;
+
+}
+.user-img img{
+    width: 45px;
+    height: 45px;
+    margin-top: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+}
+//menu
+.navbar{
+    margin: auto;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+     // border: 2px solid rgba(248, 248, 248, 0.315);
+}
+.nav-links{
+    display: flex;
+    gap: 20px;
+}
+.nav-link, .drop-down li{
+    list-style: none;
+    height: 100%;
+    padding: 10px 5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.drop-down{
+    position: absolute;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0.5rem;
+    background: rgb(54, 63, 199);
+    color: rgb(250, 250, 250);
+    box-shadow: 0 4px 12px rgba(248, 248, 248, 0.315);
+    border-radius: 10px;
+    font-size: 18px;
+    display: none;
+    z-index: 10;
+}
+.nav-link:hover{
+    background-color: rgb(99, 8, 107) ;
+    backdrop-filter: blur(20px);
+    color: #fff;
+    border-radius: 10px;
+   
+}
+.services:hover .drop-down{
+    display: block;
+}
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+.services a{
+    display: flex;
+    align-items: center;
+}
+.services a mat-icon{
+    position: relative;
+    right: -5px;
+}
+.nav-link a {
+    display: flex;
+    align-items: center;
+}
+.home a mat-icon{
+    position: relative;
+    right: 5px;
+}
+.drop-down li:hover{
+    background: #3b86e9;
+    color: white;
+    border-radius: 10px;
+}
