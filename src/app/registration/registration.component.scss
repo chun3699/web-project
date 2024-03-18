@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+.container{
+    display: grid;
+    align-items: center;
+    place-items: center;
+    height: 100vh;
+    background-color: antiquewhite; 
+}
+.wrapper-re{
+    background: #e0224c;
+    border-radius: 10px;
+    padding: 30px 40px;
+    width: 50%;
+}
+.wrapper-re h1{
+    text-align: center;
+    color: #fff;
+}
+
+.wrapper-re .input-box{
+    position: relative;
+    margin: 30px 0 ;
+}
+.wrapper-re .input-box mat-icon{
+    position: absolute;
+    color: #fff;
+    right: 20px;
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.wrapper-re .accept{
+    margin: -15px 0 15px;
+    color: #fff;
+}
+.accept label input{
+    accent-color: #fff;
+    margin-right: 5px;
+}
+.btn-re{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+.btn-re mat-icon{
+    position: absolute;
+    right: 20px;
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(248, 248, 248, 0.315);
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+}
+.input-box input::placeholder{
+    color: white;
+}
