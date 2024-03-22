@@ -17,6 +17,7 @@ const HOST: string = "http://localhost:3000";
   styleUrl: './upload-images.component.scss'
 })
 export class UploadImagesComponent {
+  imageUrl: string | null = null;
   constructor(private http: HttpClient) {}
   ngOnInit():void{
   }
@@ -31,29 +32,15 @@ export class UploadImagesComponent {
         try {
           const response = await axios.post(url, formData);
           console.log('Success:', response.data); // Log the response data if needed
+          // Set imageUrl to display the uploaded image
+          this.imageUrl = response.data.imageUrl;
         } catch (error) {
           console.error('Error:', error);
         }
-        // this.http.post(url, formData).subscribe((res: any) => {
-        //   console.log(res); // For debugging purposes
-        // });
-     
-        // try {
-        // const response = await axios.post(url, formData,{
-        //   headers:{
-        //     'Content-Type': 'application/json;'
-        //   }
-        // });
-        //   console.log('Success:', response);
-        // } catch (error) {
-        //   console.error('Error:', error);
-        // }
     } else {
       alert('Please select only jpeg and png');
     }
-        // this.http.post(response, formData).subscribe((res: any) => {
-        //   console.log(res); // For debugging purposes
-        // });
+      
         
     
     }

@@ -1,7 +1,6 @@
 <div class="container">
-
     <input type="file" (change)="onChangeFile($event)">
-
+    <img *ngIf="imageUrl" class="preview-image" [src]="imageUrl" alt="Preview Image">
 </div>
 
 

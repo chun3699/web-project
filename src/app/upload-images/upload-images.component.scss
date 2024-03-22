@@ -10,3 +10,15 @@
     height: 100vh;
     background-color: antiquewhite; 
 }
+/* CSS สำหรับกำหนดลักษณะของรูปภาพ */
+img.preview-image {
+    max-width: 100%; /* ขนาดของรูปภาพจะไม่เกินขนาดของ input element */
+    height: auto; /* รักษาอัตราส่วนของรูปภาพ */
+    display: block; /* แสดงเป็น block element */
+    margin-top: 10px; /* ระยะห่างด้านบน */
+  }
+  
+  /* CSS สำหรับ input element */
+  input[type="file"] {
+    margin-bottom: 10px; /* ระยะห่างด้านล่าง */
+  }
