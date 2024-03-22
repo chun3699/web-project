@@ -12,5 +12,5 @@ export const routes: Routes = [
     {path:'main',component:MainComponent},
     {path:'vote',component:VoteComponent},
     {path:'rank',component:RankingComponent},
-    {path:'upload',component:UploadImagesComponent}
+    {path:'upload',component:UploadImagesComponent},
 ];

@@ -9,5 +9,5 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-
+  
 }
