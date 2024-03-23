@@ -2,6 +2,7 @@ import { Component  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
 
 const HOST: string = "http://localhost:3000";
@@ -19,7 +20,7 @@ const HOST: string = "http://localhost:3000";
 export class UploadImagesComponent {
   imageUrl: string | null = null;
   isFirstUpload: boolean = true;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private service: ServiceService ) {}
   ngOnInit():void{
   }
   async delay(ms: number) {
@@ -41,14 +42,29 @@ export class UploadImagesComponent {
             await this.delay(5000);
           }
           const response = await axios.post(url, formData);
+          
           console.log('Success:', response.data); // Log the response data if needed
-          // Set imageUrl to display the uploaded image
-          this.imageUrl = response.data.imageUrl;
+         
+          //ออกมาเป็น array
+          console.log(JSON.parse(JSON.stringify(response.data)));
 
+          const imgArray = response.data.img; // ดึง array ของ URL จาก response.data
+          console.log(imgArray);
+          const imageUrl = imgArray[0];
+
+           // Set imageUrl to display the uploaded image
+          this.imageUrl = response.data.imageUrl;
           this.isFirstUpload = false;
-          // await this.delay(10000);
-          // console.log('10 seconds ' + new Date());
-        
+
+           //UploadImage in to Mysql
+           const body = {
+              img: imageUrl,
+              uid: 1
+           };
+           console.log(body);
+
+          //  const upImageMysql = await this.service.getUploadImega(body);
+
         } catch (error) {
           console.error('Error:', error);
         }
