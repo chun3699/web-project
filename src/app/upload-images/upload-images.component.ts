@@ -48,22 +48,25 @@ export class UploadImagesComponent {
           //ออกมาเป็น array
           console.log(JSON.parse(JSON.stringify(response.data)));
 
-          // const imgArray = response.data.img; // ดึง array ของ URL จาก response.data
-          // console.log(imgArray);
-          // const imageUrl = imgArray[0];
+          const imgArray = response.data.img; // ดึง array ของ URL จาก response.data
+          console.log(imgArray);
+          const imageUrlString = imgArray[0];
+          console.log(imageUrlString);
 
            // Set imageUrl to display the uploaded image
           this.imageUrl = response.data.imageUrl;
           this.isFirstUpload = false;
 
-           //UploadImage in to Mysql
-          //  const body = {
-          //     img: imageUrl,
-          //     uid: 1
-          //  };
-          //  console.log(body);
-
-          //  const upImageMysql = await this.service.getUploadImega(body)
+          //  UploadImage in to Mysql
+           const body = {
+              img: imageUrlString,
+              uid: 1
+           };
+           console.log(body);
+           console.log(JSON.stringify(body));
+           const upImageMysql = await this.service.getUploadImega(body);
+           console.log(upImageMysql);
+           
         } catch (error) {
           console.error('Error:', error);
         }
