@@ -34,8 +34,6 @@
     flex-direction: column;
     place-items: center;
     padding-top: 20px;
- 
-    
 }
 
 
@@ -72,4 +70,8 @@
     --mdc-protected-button-label-text-color: white;
     --mat-protected-button-state-layer-color: white;
     --mat-protected-button-ripple-color: rgba(255, 255, 255, 0.1);
+}
+.item3-button button{
+  width: 200px;
+  --mdc-protected-button-container-color: #09a344;
 }

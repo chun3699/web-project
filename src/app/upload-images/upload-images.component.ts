@@ -6,6 +6,8 @@ import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
 
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 const HOST: string = "http://localhost:3000";
@@ -16,7 +18,8 @@ const HOST: string = "http://localhost:3000";
   imports: [CommonModule,
     RouterModule,
     HttpClientModule,
-    MatButtonModule 
+    MatButtonModule,
+    MatIconModule 
     ],
   templateUrl: './upload-images.component.html',
   styleUrl: './upload-images.component.scss'
