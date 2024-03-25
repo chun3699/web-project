@@ -17,7 +17,6 @@ export class ServiceService {
     const response = await lastValueFrom(
       this.http.post(url,body)
     );
-    // const response = await axios.post(url,JSON.stringify(body));
     return response;
   }
 }

@@ -5,6 +5,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
 
+import {MatButtonModule} from '@angular/material/button';
+
+
 const HOST: string = "http://localhost:3000";
 
 @Component({
@@ -12,7 +15,8 @@ const HOST: string = "http://localhost:3000";
   standalone: true,
   imports: [CommonModule,
     RouterModule,
-    HttpClientModule 
+    HttpClientModule,
+    MatButtonModule 
     ],
   templateUrl: './upload-images.component.html',
   styleUrl: './upload-images.component.scss'
