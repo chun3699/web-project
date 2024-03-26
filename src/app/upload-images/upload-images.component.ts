@@ -1,9 +1,11 @@
-import { Component  } from '@angular/core';
+import { Component, SimpleChange  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
+import { SimpleChanges } from '@angular/core';
+import { Input } from '@angular/core';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -27,29 +29,34 @@ const HOST: string = "http://localhost:3000";
   styleUrl: './upload-images.component.scss'
 })
 export class UploadImagesComponent {
+  
   imageUrl: string | null = null;
   isFirstUpload: boolean = true;
 
   getImage: getImage [] = []; 
   delete_Image :any;
+  
   constructor(private http: HttpClient,private service: ServiceService ) {}
   //แสดงรูป
   async delay(ms: number) {
     return await new Promise((resolve) => setTimeout(resolve, ms));
   }
   async ngOnInit(){
-    
     this.getImage = await this.service.getImage();
     console.log(this.getImage);
     console.log(this.getImage.length);
     console.log(this.getImage[0].img);
     console.log('Call Completed')
-
+  }
+  async ngOnChanges(changes : SimpleChanges){
+    this.getImage = await this.service.getImage();
+    console.log("ทำอยู่นะ")
   }
   //ลบรูป
   async deleteImage(did : number){
     this.delete_Image = await this.service.deleteImage(did);
     console.log(this.delete_Image);
+    this.ngOnChanges({});
   }
 
   async onChangeFile(event: any) {
@@ -92,7 +99,7 @@ export class UploadImagesComponent {
            console.log(JSON.stringify(body));
            const upImageMysql = await this.service.getUploadImega(body);
            console.log(upImageMysql);
-
+           this.ngOnChanges({});
         } catch (error) {
           console.error('Error:', error);
         }
