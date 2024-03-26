@@ -7,6 +7,8 @@ import axios from "axios";
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { image } from '../../model/image';
+import { getImage } from '../../model/getImage';
 
 
 
@@ -27,12 +29,29 @@ const HOST: string = "http://localhost:3000";
 export class UploadImagesComponent {
   imageUrl: string | null = null;
   isFirstUpload: boolean = true;
+
+  getImage: getImage [] = []; 
+  delete_Image :any;
   constructor(private http: HttpClient,private service: ServiceService ) {}
-  ngOnInit():void{
-  }
+  //แสดงรูป
   async delay(ms: number) {
     return await new Promise((resolve) => setTimeout(resolve, ms));
   }
+  async ngOnInit(){
+    
+    this.getImage = await this.service.getImage();
+    console.log(this.getImage);
+    console.log(this.getImage.length);
+    console.log(this.getImage[0].img);
+    console.log('Call Completed')
+
+  }
+  //ลบรูป
+  async deleteImage(did : number){
+    this.delete_Image = await this.service.deleteImage(did);
+    console.log(this.delete_Image);
+  }
+
   async onChangeFile(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -67,22 +86,21 @@ export class UploadImagesComponent {
           //  UploadImage in to Mysql
            const body = {
               img: imageUrlString,
-              uid: 1
+              uid: 7
            };
            console.log(body);
            console.log(JSON.stringify(body));
            const upImageMysql = await this.service.getUploadImega(body);
            console.log(upImageMysql);
-           
+
         } catch (error) {
           console.error('Error:', error);
         }
     } else {
       alert('Please select only jpeg and png');
     }
-      
-        
-    
-    }
+    }   
   }
+  
+
 }

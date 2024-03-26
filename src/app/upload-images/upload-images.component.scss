@@ -53,11 +53,13 @@
 .con img{
   border-radius: 20px;
   width: 500px;
-  height: auto;
+  height: 300px;
   object-fit: cover;
   background-size: cover;
   background-position: center;
+  
 }
+
 .button-img{
   display: flex;
   justify-content: space-around;

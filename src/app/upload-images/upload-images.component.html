@@ -5,48 +5,45 @@
         <div class="con-haeder">
             Images
         </div>
-        <div class="con-body">
-            <div class="con-body-image">
-                <img src="https://th.bing.com/th/id/OIP.jiQ2kcesQt9jTA1zUtEVUwHaEK?rs=1&pid=ImgDetMain" alt="">
-                <div class="button-img">
-                    <div class="item item1-button">
-                        <button mat-raised-button color="warn">Change</button>
+                <div class="con-body">
+                    <div *ngFor="let getImage of this.getImage">
+                        <div class="con-body-image">
+                            <img src="{{this.getImage.img}}" alt="">
+                            <div class="button-img">
+                                <div class="item item1-button">
+                                    <button mat-raised-button color="warn">Change</button>
+                                </div>
+                                <div class="item item2-button">
+                                    <button mat-raised-button color="warn" 
+                                        (click)="deleteImage(this.getImage.did)"
+                                    >
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- ต้องอยูตรงนี้ -->
                     </div>
-                    <div class="item item2-button">
-                        <button mat-raised-button color="warn">Delete</button>
+                    <div *ngIf="this.getImage.length < 5">
+                        <div class="con-body-image-add">
+                            <img src="https://t4.ftcdn.net/jpg/04/81/13/43/360_F_481134373_0W4kg2yKeBRHNEklk4F9UXtGHdub3tYk.jpg" alt="">
+                            <div class="button-img">
+                                <div class="item item3-button">
+                                          <label for="fileInput" class="custom-file-upload">
+                                            <input #fileInput id="fileInput" type="file" style="display: none;" (change)="onChangeFile($event)">
+                                            <button (click)="fileInput.click()" mat-raised-button color="warn">
+                                              <mat-icon>
+                                                <span class="material-symbols-outlined">
+                                                  add_box
+                                                </span>
+                                              </mat-icon>
+                                              Add Image
+                                            </button>
+                                          </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="con-body-image">
-                <img src="https://th.bing.com/th/id/OIP.jiQ2kcesQt9jTA1zUtEVUwHaEK?rs=1&pid=ImgDetMain" alt="">
-                <div class="button-img">
-                    <div class="item item1-button">
-                        <button mat-raised-button color="warn">Change</button>
-                    </div>
-                    <div class="item item2-button">
-                        <button mat-raised-button color="warn">Delete</button>
-                    </div>
-                </div>
-            </div> -->
-            <div class="con-body-image">
-                <img src="https://th.bing.com/th/id/OIP.jiQ2kcesQt9jTA1zUtEVUwHaEK?rs=1&pid=ImgDetMain" alt="">
-                <div class="button-img">
-                    <div class="item item3-button">
-                        <button mat-raised-button color="warn">Add Image
-                        <mat-icon>
-                            <span class="material-symbols-outlined">
-                                add_box
-                                </span>
-                          </mat-icon>
-                            
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        
-        
     </div>
 </div>
 
