@@ -1,6 +1,4 @@
 <div class="container">
-    <!-- <input type="file" (change)="onChangeFile($event)">
-    <img *ngIf="imageUrl" class="preview-image" [src]="imageUrl" alt="Preview Image"> -->
     <div class="con">
         <div class="con-haeder">
             Images
@@ -11,7 +9,13 @@
                             <img src="{{this.getImage.img}}" alt="">
                             <div class="button-img">
                                 <div class="item item1-button">
-                                    <button mat-raised-button color="warn">Change</button>
+                                    
+                                    <label for="fileInput" class="custom-file-upload">
+                                        <input #fileInput id="fileInput" type="file" style="display: none;" (change)="ChangeImage($event,this.getImage.did)">
+                                        <button (click)="fileInput.click()" mat-raised-button color="warn">
+                                          Change
+                                        </button>
+                                      </label>
                                 </div>
                                 <div class="item item2-button">
                                     <button mat-raised-button color="warn" 

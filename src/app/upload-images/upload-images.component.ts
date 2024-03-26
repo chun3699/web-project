@@ -29,10 +29,8 @@ const HOST: string = "http://localhost:3000";
   styleUrl: './upload-images.component.scss'
 })
 export class UploadImagesComponent {
-  
   imageUrl: string | null = null;
   isFirstUpload: boolean = true;
-
   getImage: getImage [] = []; 
   delete_Image :any;
   
@@ -48,6 +46,7 @@ export class UploadImagesComponent {
     console.log(this.getImage[0].img);
     console.log('Call Completed')
   }
+  // รีหน้าจอตลอดตอนคลิก
   async ngOnChanges(changes : SimpleChanges){
     this.getImage = await this.service.getImage();
     console.log("ทำอยู่นะ")
@@ -58,7 +57,7 @@ export class UploadImagesComponent {
     console.log(this.delete_Image);
     this.ngOnChanges({});
   }
-
+  //อัพรูป
   async onChangeFile(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -108,6 +107,38 @@ export class UploadImagesComponent {
     }
     }   
   }
-  
+  //เปลี่ยน image
+  async ChangeImage(event:any,did : number){
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      if (file.type == 'image/png' || file.type == 'image/jpeg') {
+        const formData = new FormData();
+        formData.append('image', file);
+        const url = `${HOST}/images/`;
+        try {
+          const response = await axios.post(url, formData);
+          const imgArray = response.data.img; // ดึง array ของ URL จาก response.data
+          const imageUrlString = imgArray[0];
+           // Set imageUrl to display the uploaded image
+          this.imageUrl = response.data.imageUrl;
+          this.isFirstUpload = false;
+          //  UploadImage in to Mysql
+           const body = {
+              img: imageUrlString,
+              uid: 7
+           };
+
+          //  const upImageMysql = await this.service.getUploadImega(body);
+          const change_Image = await this.service.changeImage(body,did);
+          console.log(change_Image);
+          this.ngOnChanges({});
+        } catch (error) {
+          console.error('Error:', error);
+        }
+    } else {
+      alert('Please select only jpeg and png');
+    }
+    }
+  }
 
 }

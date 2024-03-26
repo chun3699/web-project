@@ -36,5 +36,12 @@ export class ServiceService {
     );
     return response;
   }
-  
+  // เปลี่ยน image
+  public async changeImage(body:any,did:number,options?:any){
+    const url = `${this.constants.API_ENDPOINT}/images/ChangeImage/${did}`;
+    const response = await lastValueFrom(
+      this.http.put(url,body)
+    );
+    return response;
+  }
 }
