@@ -119,16 +119,12 @@ export class UploadImagesComponent {
           const response = await axios.post(url, formData);
           const imgArray = response.data.img; // ดึง array ของ URL จาก response.data
           const imageUrlString = imgArray[0];
-           // Set imageUrl to display the uploaded image
           this.imageUrl = response.data.imageUrl;
           this.isFirstUpload = false;
-          //  UploadImage in to Mysql
            const body = {
               img: imageUrlString,
               uid: 7
            };
-
-          //  const upImageMysql = await this.service.getUploadImega(body);
           const change_Image = await this.service.changeImage(body,did);
           console.log(change_Image);
           this.ngOnChanges({});
