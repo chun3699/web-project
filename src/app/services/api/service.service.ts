@@ -44,4 +44,12 @@ export class ServiceService {
     );
     return response;
   }
+  // แสดง rank
+  public async appearRank(options?:any){
+    const url = `${this.constants.API_ENDPOINT}/vote/rank`;
+    const response = await lastValueFrom(
+      this.http.get(url)
+    );
+    return response as getImage[];
+  }
 }
