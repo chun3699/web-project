@@ -1,26 +1,56 @@
 <div class="container">
-    <div class="box">
-        <div class="item item-1">
-            <img src="https://th.bing.com/th/id/OIP.c3wqpMKv8_3HXFkIWJWwuAHaKe?rs=1&pid=ImgDetMain" alt="">
-            <div class="scors">
-                <div class="scors-icon">
-                <mat-icon>
-                    favorite
-                </mat-icon>
-                </div>
-                2222
+    <div class="box" *ngIf="imgvote.length === 0; else imgContainer">
+
+            <div *ngFor="let selectedImages of this.selectedImages">
+                <div class="item item-1" >
+                    <img src="{{selectedImages.img}}" alt="" (click)="vote(selectedImages.did)">
+                        <div class="scors">
+                            <div style="width: 75px; height: 75px; border-radius: 50%; 
+                                    background-image: url('{{selectedImages.img}}');
+                                    margin-right: 10px; margin-left: 10px;"></div>
+                                    <h2>22222</h2>
+                            </div>
+                    </div>
             </div>
-        </div>
-        <div class="item item-2">
-            <img src="https://1.bp.blogspot.com/-kL3SubeHWUc/VD_xwbbpKkI/AAAAAAAAQFs/eh8c2lFdsjc/s1600/Anime-image-anime-36250619-1024-768.jpg" alt="">
-            <div class="scors">
-                <div class="scors-icon">
-                <mat-icon>
-                    favorite
-                </mat-icon>
-                </div>
-                1111
-            </div>
-        </div>
+    
+    
+
     </div>
+    <ng-template #imgContainer>
+        <div class="box">
+            <div *ngFor="let selectedImages of this.selectedImages">
+                <div class="item item-1" >
+                    <div class="voteimg" style="
+                        background-image: url('{{selectedImages.img}}');
+
+                    "> 
+                        <div class="scorevote" *ngIf="selectedImages.did === this.imgvote[0].did">
+                            <h1 style="color: green;">WIN</h1>
+                           {{this.selectedImages.did}}
+                           <h2>{{this.selectedImages.vote_count}}</h2>
+                           <h2>{{this.score[0].ss}}</h2>
+                            <h2>{{this.score[0].score}}</h2>
+                           
+                        </div>    
+
+                        <div class="scorevote" *ngIf="selectedImages.did === this.imgvote[1].did">
+                            <h1 style="color: red;">LOSE</h1>
+                           {{this.selectedImages.did}}
+                           <h2>{{this.selectedImages.vote_count}}</h2>
+                           <h2>{{this.score[1].ss}}</h2>
+                            <h2>{{this.score[1].score}}</h2>
+                           
+                        </div>    
+                    </div>
+                        <div class="scors" style=" margin-top: 5px;">
+                                <div style="width: 75px; height: 75px; border-radius: 50%; 
+                                background-image: url('{{selectedImages.img}}');
+                                margin-right: 10px; margin-left: 10px;"></div>
+                                <h2>22222</h2>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </div>

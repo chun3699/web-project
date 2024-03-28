@@ -70,8 +70,8 @@ export class UploadImagesComponent {
           // ตรวจสอบว่าเป็นการส่งข้อมูลครั้งแรกหรือไม่
           if (!this.isFirstUpload) {
             // ล่าช้าการส่งข้อมูลถัดไป 5 วินาที (5000 milliseconds)
-            alert('Data sent after 5 seconds delay');
-            await this.delay(5000);
+            // alert('Data sent after 5 seconds delay');
+            // await this.delay(5000);
           }
           const response = await axios.post(url, formData);
           
@@ -123,9 +123,9 @@ export class UploadImagesComponent {
           this.isFirstUpload = false;
            const body = {
               img: imageUrlString,
-              uid: 7
+     
            };
-          const change_Image = await this.service.changeImage(body,did);
+          const change_Image = await this.service.changeImage(body,1);
           console.log(change_Image);
           this.ngOnChanges({});
         } catch (error) {

@@ -7,10 +7,12 @@ import axios from "axios";
 import { SimpleChanges } from '@angular/core';
 import { Input } from '@angular/core';
 
+
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
 import { getImage } from '../../model/getImage';
+
 import { User } from '../../model/model_uid';
 
 const HOST: string = "http://localhost:3000";

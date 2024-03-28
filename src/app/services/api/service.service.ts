@@ -11,6 +11,7 @@ import axios from "axios";
 })
 export class ServiceService {
 
+  
   constructor(private constants : Constants, private http: HttpClient) { }
   //upload รูปภาพ
   public async getUploadImega(body : any,options?: any){
@@ -47,6 +48,25 @@ export class ServiceService {
   // แสดง rank
   public async appearRank(options?:any){
     const url = `${this.constants.API_ENDPOINT}/vote/rank`;
+    const response = await lastValueFrom(
+      this.http.get(url)
+    );
+    return response as getImage[];
+  }
+
+  //นำรูปทั้งหมดใส่ในตัวแปร
+  public async allimg(){
+    const url = `${this.constants.API_ENDPOINT}/images/selete`;
+    const response = await lastValueFrom(
+      this.http.get(url)
+    );
+    return response as getImage[];
+  }
+
+  //ใส่ค่าผลคะแนน
+  public async vote(){
+    
+    const url = `${this.constants.API_ENDPOINT}/images/selete`;
     const response = await lastValueFrom(
       this.http.get(url)
     );
