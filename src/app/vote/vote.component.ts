@@ -23,7 +23,7 @@ export class VoteComponent {
   images: getImage[] = []; 
   selectedImages: getImage[] = [];
   score: vote[] = [];
-
+  
   constructor(private service: ServiceService) {}
 
   async ngOnInit(){
