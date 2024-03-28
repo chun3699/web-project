@@ -34,6 +34,7 @@ export class LoginComponent {
         this.router.navigate(['/vote']);
 
       }else{console.log("error");
+      alert("ไม่พบข้อมูลผู้ใช้");
       }
                 
   }
