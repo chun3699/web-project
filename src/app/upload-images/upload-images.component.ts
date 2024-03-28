@@ -123,9 +123,9 @@ export class UploadImagesComponent {
           this.isFirstUpload = false;
            const body = {
               img: imageUrlString,
-              uid: 7
+     
            };
-          const change_Image = await this.service.changeImage(body,did);
+          const change_Image = await this.service.changeImage(body,1);
           console.log(change_Image);
           this.ngOnChanges({});
         } catch (error) {

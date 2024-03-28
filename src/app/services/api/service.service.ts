@@ -81,7 +81,7 @@ export class ServiceService {
     );
     return response as User[];
   }
-  //ทำไว้ก่อนนะ
+  //ทำไว้ก่อนนะ <-
   public async UserIsYou(options?:any){
     const url = `${this.constants.API_ENDPOINT}/login/saifa/saifa`;
     const response = await lastValueFrom(
@@ -89,4 +89,12 @@ export class ServiceService {
     );
     return response as User[];
   };
+  //updata profile <-
+  public async UpdateProfile(body:any,uid:number,options?:any){
+    const url = `${this.constants.API_ENDPOINT}/login/profile/1`;
+    const response = await lastValueFrom(
+      this.http.put(url,body)
+    );
+    return response as User[];
+  }
 }
