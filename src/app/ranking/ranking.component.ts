@@ -6,7 +6,7 @@ import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
 import { SimpleChanges } from '@angular/core';
 import { Input } from '@angular/core';
-
+import { HeaderComponent } from '../header/header.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
@@ -21,7 +21,8 @@ import { getImage } from '../../model/getImage';
     RouterModule,
     HttpClientModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HeaderComponent,
   ],
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.scss'

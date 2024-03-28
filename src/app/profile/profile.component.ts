@@ -6,8 +6,7 @@ import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
 import { SimpleChanges } from '@angular/core';
 import { Input } from '@angular/core';
-
-
+import { HeaderComponent } from '../header/header.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
@@ -23,7 +22,9 @@ const HOST: string = "http://localhost:3000";
   imports: [
       CommonModule,
       MatButtonModule,
-      MatIconModule],
+      MatIconModule,
+      HeaderComponent,
+    ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -35,14 +36,24 @@ export class ProfileComponent {
   
   constructor(private http: HttpClient,private service: ServiceService ){}
   async ngOnInit(){
-    this.getUid = await this.service.UserIsYou();
+    const user = this.service.getUserCredentials();
+    if (user) {
+      this.getUid = await this.service.login(user.username, user.password);
+    } else {
+      // ไม่พบข้อมูล user และ password ใน sessionStorage
+    }
     this.showProfile;
     console.log(this.getUid);
     console.log(this.getUid[0].profile);
     console.log('Call Completed');
   }
   async ngOnChanges(changes : SimpleChanges){
-    this.getUid = await this.service.UserIsYou();
+    const user = this.service.getUserCredentials();
+    if (user) {
+      this.getUid = await this.service.login(user.username, user.password);
+    } else {
+      // ไม่พบข้อมูล user และ password ใน sessionStorage
+    }
     console.log("getUid");
   }
   async ProfileImage(event:any){
@@ -93,7 +104,7 @@ export class ProfileComponent {
       const body = {
         name: text.value
     };
-    const UpProfile_P = await this.service.UpdateProfile(body,1);
+    const UpProfile_P = await this.service.UpdateProfile(body,this.getUid[0].uid);
     console.log(UpProfile_P);
     this.ngOnChanges({});
     text.value ='';

@@ -6,6 +6,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ServiceService } from '../services/api/service.service';
 import { User } from '../../model/model_uid';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,7 @@ export class HeaderComponent {
 
   uuser: User[] = [];
 
-  constructor(private service: ServiceService) {}
+  constructor(private service: ServiceService,private router: Router) {}
 
 
   async ngOnInit(){
@@ -38,7 +39,10 @@ export class HeaderComponent {
 
   logout(){
     this.service.clearUserCredentials();
-    window.location.reload();
+    this.router.navigate(['/vote']);
   }
   
+  profile(){
+    this.router.navigate(['/profile']);
+  }
 }

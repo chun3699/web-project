@@ -44,8 +44,8 @@ export class ServiceService {
     return response;
   }
   //แสดงรูปของ Uid
-  public async getImage(options?:any){
-    const url = `${this.constants.API_ENDPOINT}/images/UidIsImage/7`;
+  public async getImage(uid: number){
+    const url = `${this.constants.API_ENDPOINT}/images/UidIsImage/${uid}`;
     const response = await lastValueFrom(
       this.http.get(url)
     );
@@ -102,14 +102,7 @@ export class ServiceService {
     );
     return response as User[];
   }
-  //ทำไว้ก่อนนะ <-
-  public async UserIsYou(options?:any){
-    const url = `${this.constants.API_ENDPOINT}/login/saifa/saifa`;
-    const response = await lastValueFrom(
-      this.http.get(url)
-    );
-    return response as User[];
-  };
+  
   //updata profile <-
   public async UpdateProfile(body:any,uid:number,options?:any){
     const url = `${this.constants.API_ENDPOINT}/login/profile/1`;
@@ -127,6 +120,8 @@ export class ServiceService {
     );
     return response as User[];
   }
+
+  //register
   public async CrateUid(body:any){
     const url = `${this.constants.API_ENDPOINT}/login/`;
     const response =await lastValueFrom(

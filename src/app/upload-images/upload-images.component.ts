@@ -6,12 +6,12 @@ import { ServiceService } from '../services/api/service.service';
 import axios from "axios";
 import { SimpleChanges } from '@angular/core';
 import { Input } from '@angular/core';
-
+import { HeaderComponent } from '../header/header.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
 import { getImage } from '../../model/getImage';
-
+import { User } from '../../model/model_uid';
 
 
 const HOST: string = "http://localhost:3000";
@@ -23,7 +23,8 @@ const HOST: string = "http://localhost:3000";
     RouterModule,
     HttpClientModule,
     MatButtonModule,
-    MatIconModule 
+    MatIconModule,
+    HeaderComponent, 
     ],
   templateUrl: './upload-images.component.html',
   styleUrl: './upload-images.component.scss'
@@ -33,22 +34,32 @@ export class UploadImagesComponent {
   isFirstUpload: boolean = true;
   getImage: getImage [] = []; 
   delete_Image :any;
-  
+  uuser: User[] = [];
   constructor(private http: HttpClient,private service: ServiceService ) {}
   //แสดงรูป
   async delay(ms: number) {
     return await new Promise((resolve) => setTimeout(resolve, ms));
   }
   async ngOnInit(){
-    this.getImage = await this.service.getImage();
-    console.log(this.getImage);
-    console.log(this.getImage.length);
-    console.log(this.getImage[0].img);
-    console.log('Call Completed')
+    const user = this.service.getUserCredentials();
+    if (user) {
+      this.uuser = await this.service.login(user.username, user.password);
+      this.getImage = await this.service.getImage(this.uuser[0].uid);
+      console.log(this.getImage);
+      console.log(this.getImage.length);
+      console.log(this.getImage[0].img);
+      console.log('Call Completed')
+
+
+    } else {
+      // ไม่พบข้อมูล user และ password ใน sessionStorage
+    }
+
+
   }
   // รีหน้าจอตลอดตอนคลิก
   async ngOnChanges(changes : SimpleChanges){
-    this.getImage = await this.service.getImage();
+    this.getImage = await this.service.getImage(this.uuser[0].uid);
     console.log("ทำอยู่นะ")
   }
   //ลบรูป
@@ -68,11 +79,11 @@ export class UploadImagesComponent {
         console.log(url)
         try {
           // ตรวจสอบว่าเป็นการส่งข้อมูลครั้งแรกหรือไม่
-          if (!this.isFirstUpload) {
+          // if (!this.isFirstUpload) {
             // ล่าช้าการส่งข้อมูลถัดไป 5 วินาที (5000 milliseconds)
             // alert('Data sent after 5 seconds delay');
             // await this.delay(5000);
-          }
+          // }
           const response = await axios.post(url, formData);
           
           console.log('Success:', response.data); // Log the response data if needed
@@ -92,7 +103,7 @@ export class UploadImagesComponent {
           //  UploadImage in to Mysql
            const body = {
               img: imageUrlString,
-              uid: 7
+              uid: this.uuser[0].uid
            };
            console.log(body);
            console.log(JSON.stringify(body));

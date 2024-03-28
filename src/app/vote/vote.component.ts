@@ -123,10 +123,13 @@ export class VoteComponent {
   this.delayRefresh();
   }
 
-  delayRefresh(): void {
-    setTimeout(() => {
+   delayRefresh(): void {
+    setTimeout(async () => {
       // รีเฟรชหน้าใหม่หลังจาก delay 3 วินาที
-      window.location.reload();
+      // window.location.reload();
+      this.images = await this.service.allimg();
+      this.selectRandomImages();
+
     }, 1500);
   }
 

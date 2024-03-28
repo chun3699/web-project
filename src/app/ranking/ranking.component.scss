@@ -10,7 +10,8 @@
     background: url('https://cdn.pixabay.com/photo/2016/10/21/14/50/plouzane-1758197_1280.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    display: grid;
+   display: flex;
+   flex-direction: column;
     place-items: center;
 }
 .box{
@@ -58,9 +59,9 @@
     position: relative;
 }
 .rank-header{
-    position: absolute;
-    left: 250px;
-    top: 85px;
+    
+    margin-top: 30px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     background: white;
