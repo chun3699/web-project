@@ -6,14 +6,16 @@
   
   .container {
     height: 100vh;
-    background-color: rgb(152, 158, 236);
+    background: url('https://wallpapercave.com/wp/wp2150006.png') no-repeat;
     position: relative;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
   }
   
   .image-background {
     height: 300px;
     width: 100%;
-    background: rgb(241, 213, 213);
     overflow: hidden;
     
   }
@@ -61,7 +63,7 @@
     // border-radius: 20px;
     // margin: 20px;
    
-    background: rgb(23, 133, 236);
+    // background: rgb(23, 133, 236);
     padding: 15px;
     margin: 10px;
     border-radius: 20px;
