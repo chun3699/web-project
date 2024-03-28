@@ -10,8 +10,30 @@ import axios from "axios";
   providedIn: 'root'
 })
 export class ServiceService {
+  uuser: User[] = [];
+  //session
+  //รับค่า user และ password
+  setUserCredentials(username: string, password: string): void {
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+  }
 
+  // อ่านข้อมูล user และ password 
+  getUserCredentials(): { username: string, password: string } | null {
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    return (username && password) ? { username, password } : null;
+  }
+
+  // ลบข้อมูล user และ password 
+  clearUserCredentials(): void {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+  }
   
+
+
+
   constructor(private constants : Constants, private http: HttpClient) { }
   //upload รูปภาพ
   public async getUploadImega(body : any,options?: any){
@@ -65,8 +87,7 @@ export class ServiceService {
 
   //ใส่ค่าผลคะแนน
   public async vote(did:number,score:number){
-    console.log("serv"+did);
-    
+    // console.log("serv"+did);
     const url = `${this.constants.API_ENDPOINT}/vote/scors/${did}/${score}`;
     const response = await lastValueFrom(
       this.http.put(url,{})
@@ -97,10 +118,12 @@ export class ServiceService {
     );
     return response as User[];
   }
-  public async CrateUid(body:any,options?:any){
-    const url = `${this.constants.API_ENDPOINT}/login/`;
-    const response =await lastValueFrom(
-      this.http.post(url,body)
+
+  //login
+  public async login(user: string,pass: string){
+    const url = `${this.constants.API_ENDPOINT}/login/${user}/${pass}`;
+    const response = await lastValueFrom(
+      this.http.get(url)
     );
     return response as User[];
   }

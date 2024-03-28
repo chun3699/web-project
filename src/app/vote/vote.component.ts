@@ -47,9 +47,14 @@ export class VoteComponent {
     const K = 10; // ค่าคงที่ K สำหรับ Elo Rating Algorithm
     const E = 1 / (1 + Math.pow(10, (scoreB - scoreA) / 400)); // คำนวณค่าคาดการณ์ความน่าจะเป็นของการชนะ
     console.log("win"+E);
+
     const S = 1;
-    let newScore = scoreA + K * (S - E); // คำนวณคะแนนใหม่
-    newScore = Math.round(newScore); // ทำเป็นจำนวนเต็ม
+    let ss = K * (S - E);
+    ss = Math.round(ss);// ทำเป็นจำนวนเต็ม
+
+    let newScore = scoreA + ss; // คำนวณคะแนนใหม่
+    // newScore = Math.round(newScore); 
+
     if (newScore < 0) {
       newScore = 0; // ตรวจสอบและกำหนดให้คะแนนใหม่ไม่ต่ำกว่า 0
     }
@@ -60,19 +65,22 @@ export class VoteComponent {
       this.score[0].K = K;
       this.score[0].sA = scoreA;
       this.score[0].sB = scoreB;
-      this.score[0].ss = K * (S - E);
+      this.score[0].ss = ss;
       console.log("win"+this.score[0].ss);
   }
 
   calculateEloScore_Lose(scoreA: number, scoreB: number): void {
     const K = 10; // ค่าคงที่ K สำหรับ Elo Rating Algorithm
-    const E = 1 / (1 + Math.pow(10, (scoreB - scoreA) / 400)); // คำนวณค่าคาดการณ์ความน่าจะเป็นของการชนะ
+    let E = 1 / (1 + Math.pow(10, (scoreB - scoreA) / 400)); // คำนวณค่าคาดการณ์ความน่าจะเป็นของการชนะ
     console.log("Lose"+E);
+
     const S = 0;
-    let newScore = scoreA + K * (S - E); // คำนวณคะแนนใหม่
-    newScore = Math.round(newScore); // ทำเป็นจำนวนเต็ม
-    console.log("news"+newScore);
-    
+    let ss = K * (S - E);
+    ss = Math.round(ss); // ทำเป็นจำนวนเต็ม
+
+    let newScore = scoreA + ss // คำนวณคะแนนใหม่
+    // newScore = Math.round(newScore);
+
     if (newScore < 0) {
       newScore = 0; // ตรวจสอบและกำหนดให้คะแนนใหม่ไม่ต่ำกว่า 0
     }
@@ -83,7 +91,7 @@ export class VoteComponent {
       this.score[1].K = K;
       this.score[1].sA = scoreA;
       this.score[1].sB = scoreB;
-      this.score[1].ss = K * (S - E);
+      this.score[1].ss = ss;
       console.log("Lose"+this.score[0].ss);
   }
 
@@ -124,7 +132,9 @@ export class VoteComponent {
 
   async putvote(): Promise<void> {
     for (let item of this.score) {
-      let did = item.did;
+      let did:number = item.did;
+      console.log("did "+did);
+      
       let score = item.score;
       const vote = await this.service.vote(did, score);
       console.log("vote" + vote);
