@@ -6,10 +6,10 @@
 .container{
     display: grid;
     height: 100vh;
-    background-color: antiquewhite; 
+    background-color: rgb(119, 132, 252); 
 }
 .mat-toolbar.mat-primary {
-    --mat-toolbar-container-background-color: #72093d;
+    --mat-toolbar-container-background-color: #0e205a;
     --mat-toolbar-container-text-color: rgb(233, 213, 213);
 }
 main{
@@ -23,7 +23,7 @@ main{
     width: 100%;
     flex-direction: row-reverse;
     align-items: center;
-    background-color: rgb(133, 25, 84);
+    background-color: rgb(85, 6, 131);
     height: 50px;
     gap :20px;
     padding: 20px;
