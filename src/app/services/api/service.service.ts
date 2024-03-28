@@ -64,11 +64,12 @@ export class ServiceService {
   }
 
   //ใส่ค่าผลคะแนน
-  public async vote(){
+  public async vote(did:number,score:number){
+    console.log("serv"+did);
     
-    const url = `${this.constants.API_ENDPOINT}/images/selete`;
+    const url = `${this.constants.API_ENDPOINT}/vote/scors/${did}/${score}`;
     const response = await lastValueFrom(
-      this.http.get(url)
+      this.http.put(url,{})
     );
     return response as getImage[];
   }
