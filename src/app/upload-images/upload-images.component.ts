@@ -123,7 +123,6 @@ export class UploadImagesComponent {
           this.isFirstUpload = false;
            const body = {
               img: imageUrlString,
-     
            };
           const change_Image = await this.service.changeImage(body,1);
           console.log(change_Image);
