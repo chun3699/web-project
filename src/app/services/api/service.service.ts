@@ -97,4 +97,11 @@ export class ServiceService {
     );
     return response as User[];
   }
+  public async CrateUid(body:any,options?:any){
+    const url = `${this.constants.API_ENDPOINT}/login/`;
+    const response =await lastValueFrom(
+      this.http.post(url,body)
+    );
+    return response as User[];
+  }
 }

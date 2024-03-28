@@ -2,11 +2,11 @@
     <div class="wrapper-re">
         <h1>Registration</h1>
         <div class="input-box">
-          <input type="text" placeholder="Name" required>
+          <input  [(ngModel)]="name" type="text" placeholder="Name" required>
           <mat-icon> account_circle </mat-icon>
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Username" required>
+          <input [(ngModel)]="username" type="text" placeholder="Username" required>
           <mat-icon>
             <span class="material-symbols-outlined">
               lock
@@ -14,14 +14,14 @@
           </mat-icon>
         </div>
         <div class="input-box">
-          <input type="password" placeholder="Password" required>
+          <input  [(ngModel)]="password" type="text" placeholder="Password" required>
           <mat-icon>
             <span class="material-symbols-outlined">
               lock
             </span>
           </mat-icon>
         </div>
-        <button class="btn-re">Register Now
+        <button  (click)="btnCrateUid()" class="btn-re">Register Now
           <mat-icon>
             add_circle
           </mat-icon>
