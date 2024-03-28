@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { VoteComponent } from './vote/vote.component';
 import { RankingComponent } from './ranking/ranking.component'; 
 import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     {path:'login',component:LoginComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
     {path:'vote',component:VoteComponent},
     {path:'rank',component:RankingComponent},
     {path:'upload',component:UploadImagesComponent},
+    {path:'profile',component:ProfileComponent}
 ];

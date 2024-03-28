@@ -1,1 +1,23 @@
-<p>profile works!</p>
+<div class="container">
+  
+    <div class="card-profile">
+      
+        <div class="card-profile-hand" (click)="fileInput.click()">
+            <img src="https://th.bing.com/th/id/OIP.6kk6kiVl5cpEv_cSkNOCqwHaF0?rs=1&pid=ImgDetMain" alt="">
+            <input type="file" #fileInput style="display: none ;"(change)="ProfileImage()" /> <!-- ซ่อน input นี้ไว้ -->
+          </div>
+        <div class="card-profile-body">
+            <h1>Name</h1>
+            <div>
+                <h2>Rename : </h2>
+                <div class="input-box">
+                    <input type="text" placeholder="" required>
+                </div>
+            </div>
+        </div>
+        <div class="card-profile-add">
+            <button mat-flat-button color="accent">Edit</button>
+        </div>
+    </div>
+   
+</div>

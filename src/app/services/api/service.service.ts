@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../config/constants';
 import { getImage } from '../../../model/getImage';
-
+import { User } from '../../../model/model_uid';
 import { lastValueFrom } from 'rxjs';
 import axios from "axios";
 
@@ -72,4 +72,20 @@ export class ServiceService {
     );
     return response as getImage[];
   }
+  //แสดง uid ทั้งหมด
+  public async getAllUser(options?:any){
+    const url = `${this.constants.API_ENDPOINT}/login`;
+    const response = await lastValueFrom(
+      this.http.get(url)
+    );
+    return response as User[];
+  }
+  //ทำไว้ก่อนนะ
+  public async UserIsYou(options?:any){
+    const url = `${this.constants.API_ENDPOINT}/login/saifa/saifa`;
+    const response = await lastValueFrom(
+      this.http.get(url)
+    );
+    return response as User[];
+  };
 }
