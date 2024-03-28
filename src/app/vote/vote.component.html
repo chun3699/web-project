@@ -26,20 +26,26 @@
                     "> 
                         <div class="scorevote" *ngIf="selectedImages.did === this.imgvote[0].did">
                             <h1 style="color: green;">WIN</h1>
-                           {{this.selectedImages.did}}
-                           <h2>{{this.selectedImages.vote_count}}</h2>
-                           <h2>{{this.score[0].ss}}</h2>
-                            <h2>{{this.score[0].score}}</h2>
-                           
+                            <h2>Old Score {{this.selectedImages.vote_count}}</h2>
+                            <h3 style="margin-top: 10px;">Chance win</h3>
+                            <h4>EA = 1/(1 + 10 ** (({{this.score[0].sB}}-{{this.score[0].sA}}) / 400)) = {{this.score[0].E}}</h4>
+                            <h3 style="margin-top: 10px;">Points</h3>
+                            <h3>K : {{this.score[0].K}}</h3>
+                            <h4>PA = {{this.score[0].K}} * ({{this.score[0].S}} - {{this.score[0].E}}) = </h4>
+                            <h2 style="color: green;">{{this.score[0].ss}}</h2>
+                            <h2 style="margin-top: 10px;">New Score {{this.score[0].score}}</h2>
                         </div>    
 
                         <div class="scorevote" *ngIf="selectedImages.did === this.imgvote[1].did">
                             <h1 style="color: red;">LOSE</h1>
-                           {{this.selectedImages.did}}
-                           <h2>{{this.selectedImages.vote_count}}</h2>
-                           <h2>{{this.score[1].ss}}</h2>
-                            <h2>{{this.score[1].score}}</h2>
-                           
+                            <h2>Old Score {{this.selectedImages.vote_count}}</h2>
+                            <h3 style="margin-top: 10px;">Chance win</h3>
+                            <h4>EB = 1/(1 + 10 ** (({{this.score[1].sB}}-{{this.score[1].sA}}) / 400)) = {{this.score[1].E}}</h4>
+                            <h3 style="margin-top: 10px;">Points</h3>
+                            <h3>K : {{this.score[1].K}}</h3>
+                            <h4>PB = {{this.score[1].K}} * ({{this.score[1].S}} - {{this.score[1].E}}) = </h4>
+                            <h2 style="color: red;">{{this.score[1].ss}}</h2>
+                            <h2 style="margin-top: 10px;">New Score {{this.score[1].score}}</h2>
                         </div>    
                     </div>
                         <div class="scors" style=" margin-top: 5px;">
