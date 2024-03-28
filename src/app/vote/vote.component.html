@@ -27,11 +27,19 @@
                         <div class="scorevote" *ngIf="selectedImages.did === this.imgvote[0].did">
                             <h1 style="color: green;">WIN</h1>
                            {{this.selectedImages.did}}
+                           <h2>{{this.selectedImages.vote_count}}</h2>
+                           <h2>{{this.score[0].ss}}</h2>
+                            <h2>{{this.score[0].score}}</h2>
+                           
                         </div>    
 
                         <div class="scorevote" *ngIf="selectedImages.did === this.imgvote[1].did">
                             <h1 style="color: red;">LOSE</h1>
                            {{this.selectedImages.did}}
+                           <h2>{{this.selectedImages.vote_count}}</h2>
+                           <h2>{{this.score[1].ss}}</h2>
+                            <h2>{{this.score[1].score}}</h2>
+                           
                         </div>    
                     </div>
                         <div class="scors" style=" margin-top: 5px;">
