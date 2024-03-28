@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ServiceService } from '../services/api/service.service';
 import { getImage } from '../../model/getImage';
 import { vote } from '../../model/vote';
+import { HeaderComponent } from '../header/header.component'; 
 
 @Component({
   selector: 'app-vote',
@@ -11,7 +12,7 @@ import { vote } from '../../model/vote';
   imports: [
     MatIconModule,
     CommonModule,
-  
+    HeaderComponent,
   ],
   templateUrl: './vote.component.html',
   styleUrl: './vote.component.scss'
@@ -118,7 +119,7 @@ export class VoteComponent {
     setTimeout(() => {
       // รีเฟรชหน้าใหม่หลังจาก delay 3 วินาที
       window.location.reload();
-    }, 1000);
+    }, 1500);
   }
 
   async putvote(): Promise<void> {
