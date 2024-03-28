@@ -29,12 +29,18 @@ import { getImage } from '../../model/getImage';
 export class RankingComponent {
   getRank : getImage [] = []; 
   Number = 1;
-  constructor(private http: HttpClient,private service: ServiceService ) {}
+
+  constructor(private http: HttpClient,private service: ServiceService ) {
+    
+  }
   async ngOnInit(){
     this.getRank = await this.service.appearRank();
     console.log(this.getRank);
-    console.log(this.getRank.length);
-    console.log(this.getRank[0].img);
-    console.log('Call Completed')
+    console.log('Call Completed');
+    console.log('time ' + new Date());
   }
+  
+
+  
+  
 }
