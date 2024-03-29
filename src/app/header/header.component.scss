@@ -35,6 +35,9 @@ main{
     width: 45px;
     height: 45px;
     margin-top: 10px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
     background: #ffffff;
     border-radius: 50%;
     outline: none;

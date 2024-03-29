@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
 import { getImage } from '../../model/getImage';
 import { User } from '../../model/model_uid';
-
+import { Router } from '@angular/router';
 
 const HOST: string = "http://localhost:3000";
 
@@ -35,7 +35,7 @@ export class UploadImagesComponent {
   getImage: getImage [] = []; 
   delete_Image :any;
   uuser: User[] = [];
-  constructor(private http: HttpClient,private service: ServiceService ) {}
+  constructor(private http: HttpClient,private service: ServiceService ,private router: Router ) {}
   //แสดงรูป
   async delay(ms: number) {
     return await new Promise((resolve) => setTimeout(resolve, ms));
@@ -53,6 +53,7 @@ export class UploadImagesComponent {
 
     } else {
       // ไม่พบข้อมูล user และ password ใน sessionStorage
+      this.router.navigate(['/vote']);
     }
 
 

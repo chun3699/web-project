@@ -25,10 +25,17 @@ export class VoteComponent {
   selectedImages: getImage[] = [];
   score: vote[] = [];
   userimg: User[] = [];
+  uuser: User[] = [];
 
   constructor(private service: ServiceService) {}
 
   async ngOnInit(){
+    const user = this.service.getUserCredentials();
+    if (user) {
+      this.uuser = await this.service.login(user.username, user.password);
+    } else {
+      // ไม่พบข้อมูล user และ password ใน sessionStorage
+    }
     this.images = await this.service.allimg();
     this.selectRandomImages();
   }

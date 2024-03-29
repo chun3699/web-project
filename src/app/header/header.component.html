@@ -1,6 +1,6 @@
 <header>
     <mat-toolbar color="primary">
-        <span>My App</span>
+        <span>Allmash</span>
         <span class="example-spacer"></span>
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
           <mat-icon>favorite</mat-icon>
@@ -32,9 +32,11 @@
 
         <div class="tabal"  *ngIf="uuser.length > 0">
             <a (click)="logout()" style="cursor: pointer;">Logout</a>
+
             <div class="user-img" style="cursor: pointer;" (click)="profile()">
               <img src="{{uuser[0].profile}}" alt="">
             </div>
+            
             <div class="user-text">
               <h1>{{uuser[0].name}}</h1>
             </div>

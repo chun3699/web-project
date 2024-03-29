@@ -39,6 +39,7 @@ export class HeaderComponent {
 
   logout(){
     this.service.clearUserCredentials();
+    window.location.reload();
     this.router.navigate(['/vote']);
   }
   
