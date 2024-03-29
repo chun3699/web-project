@@ -5,6 +5,7 @@ import { ServiceService } from '../services/api/service.service';
 import { getImage } from '../../model/getImage';
 import { vote } from '../../model/vote';
 import { HeaderComponent } from '../header/header.component'; 
+import { User } from '../../model/model_uid';
 
 @Component({
   selector: 'app-vote',
@@ -23,12 +24,24 @@ export class VoteComponent {
   images: getImage[] = []; 
   selectedImages: getImage[] = [];
   score: vote[] = [];
-  
+  userimg: User[] = [];
+
   constructor(private service: ServiceService) {}
 
   async ngOnInit(){
     this.images = await this.service.allimg();
     this.selectRandomImages();
+  }
+
+  async imagesuser(){
+    
+    for (let item of this.selectedImages) {
+      let did = item.did;
+      let userpic = await this.service.userpic(did);
+      console.log("name: "+userpic[0].name);
+      console.log("pro: "+userpic[0].profile);
+      this.userimg.push(userpic[0]);
+    }
   }
 
   selectRandomImages() {
@@ -41,6 +54,7 @@ export class VoteComponent {
       index2 = Math.floor(Math.random() * this.images.length);
     }
     this.selectedImages = [this.images[index1], this.images[index2]];
+    this.imagesuser();
   }
 
   calculateEloScore_Win(scoreA: number, scoreB: number): void {
@@ -67,6 +81,7 @@ export class VoteComponent {
       this.score[0].sB = scoreB;
       this.score[0].ss = ss;
       console.log("win"+this.score[0].ss);
+
   }
 
   calculateEloScore_Lose(scoreA: number, scoreB: number): void {
