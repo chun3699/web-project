@@ -2,14 +2,14 @@
 <div class="container" style="margin-top: 0;">
     <div class="box" *ngIf="imgvote.length === 0; else imgContainer">
 
-            <div *ngFor="let selectedImages of this.selectedImages">
+            <div *ngFor="let selectedImages of this.selectedImages;let i = index ">
                 <div class="item item-1" >
                     <img src="{{selectedImages.img}}" alt="" (click)="vote(selectedImages.did)">
                         <div class="scors">
                             <div style="width: 75px; height: 75px; border-radius: 50%; 
-                                    background-image: url('{{selectedImages.img}}');
+                                    background-image: url('{{userimg[i].profile}}');
                                     margin-right: 10px; margin-left: 10px;"></div>
-                                    <h2>22222</h2>
+                                    <h2>{{userimg[i].name}}</h2>
                             </div>
                     </div>
             </div>

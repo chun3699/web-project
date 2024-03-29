@@ -85,7 +85,7 @@ export class ProfileComponent {
              };
              console.log(body);
              console.log(JSON.stringify(body));
-             const UpProfile_P = await this.service.UpdateProfile(body,1);
+             const UpProfile_P = await this.service.UpdateProfile(body,this.getUid[0].uid);
              console.log(UpProfile_P);
              this.ngOnChanges({});
              

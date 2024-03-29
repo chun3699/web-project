@@ -129,4 +129,13 @@ export class ServiceService {
     );
     return response as User[];
   }
+
+  //showuserpic
+  public async userpic(did:number){
+    const url = `${this.constants.API_ENDPOINT}/images/user/${did}`;
+    const response = await lastValueFrom(
+      this.http.get(url)
+    );
+    return response as User[];
+  }
 }
