@@ -6,6 +6,7 @@ import { VoteComponent } from './vote/vote.component';
 import { RankingComponent } from './ranking/ranking.component'; 
 import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdmitComponent } from './admit/admit.component';
 
 
 export const routes: Routes = [
@@ -16,5 +17,5 @@ export const routes: Routes = [
     {path:'rank',component:RankingComponent},
     {path:'upload',component:UploadImagesComponent},
     {path:'profile',component:ProfileComponent},
-    
+    {path:'admit',component:AdmitComponent}
 ];

@@ -11,11 +11,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
 import { getImage } from '../../model/getImage';
-
+import { User } from '../../model/model_uid';
 
 
 @Component({
-  selector: 'app-ranking',
+  selector: 'app-admit',
   standalone: true,
   imports: [CommonModule,
     RouterModule,
@@ -24,19 +24,17 @@ import { getImage } from '../../model/getImage';
     MatIconModule,
     HeaderComponent,
   ],
-  templateUrl: './ranking.component.html',
-  styleUrl: './ranking.component.scss'
+  templateUrl: './admit.component.html',
+  styleUrl: './admit.component.scss'
 })
-export class RankingComponent {
-  getRank : getImage [] = []; 
-  Number = 1;
-
+export class AdmitComponent {
+  admit_U : User [] = []; 
   constructor(private http: HttpClient,private service: ServiceService ) {
     
   }
   async ngOnInit(){
-    this.getRank = await this.service.appearRank();
-    console.log(this.getRank);
+    this.admit_U = await this.service.seleteAtUid();
+    console.log(this.admit_U);
     console.log('Call Completed');
     console.log('time ' + new Date());
   } 
