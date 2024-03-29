@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 import { User } from '../../model/model_uid';
 
 // const HOST: string = "http://localhost:3000";
-const HOST: string = "https://node-project-ds4m.vercel.app";
+const HOST: string = "https://node-project-ten-ecru.vercel.app";
 
 @Component({
   selector: 'app-profile',
