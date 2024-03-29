@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.container{
+    height: 100vh;
+    background-color: rgb(119, 132, 252);
+    // background: url('https://cdn.pixabay.com/photo/2016/10/21/14/50/plouzane-1758197_1280.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+   display: flex;
+   flex-direction: column;
+    place-items: center;
+}
+.box{
+    position: relative;
+    // background: rgb(233, 112, 112);
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border: solid 2px white;
+    width: 60%;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 25px;
+    padding: 20px;
+    z-index: 5;
+   
+}
+//ลูกกลิ้ง
+.box::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 25px;
+}
+.box::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px  rgba(0,0,0,0.3);
+    visibility: hidden;
+}
+.box::-webkit-scrollbar-thumb{
+    background-color: rgb(138, 138, 132,0.3);
+    outline: none;
+    border-radius: 10px;
+    visibility: hidden;
+}
+.box:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgb(255, 177, 229);
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(255, 47, 47, 0.315);
+    margin: 10px;
+    position: relative;
+}
+.rank-header{
+    
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background: white;
+    width: 30%;
+    text-align: center;
+    border-left: 5px solid rgba(0, 0, 0, 0.315);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.315);;
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 10;
+  
+}
+.rank-header mat-icon{
+    padding-right: 40px;
+    color: rgb(255, 102, 0);
+}
+.rank-number{
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    background: firebrick;
+    border-radius:30px;
+    color: aliceblue;
+}
+.rank img{
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgb(248, 229, 229);
+     border-radius: 12px;
+    padding: 5px;
+}
+.rank-vote{
+    display: flex;
+    color: red;
+    align-items: center;
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: 500px;
+    height: auto;
+}
+.rank-vote mat-icon{
+    color: red;
+    padding: 0px 50px 0px 25px;
+    font-size: 25px;
+}

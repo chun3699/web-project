@@ -13,9 +13,8 @@ import { image } from '../../model/image';
 import { getImage } from '../../model/getImage';
 
 
-
 @Component({
-  selector: 'app-ranking',
+  selector: 'app-admit',
   standalone: true,
   imports: [CommonModule,
     RouterModule,
@@ -24,13 +23,11 @@ import { getImage } from '../../model/getImage';
     MatIconModule,
     HeaderComponent,
   ],
-  templateUrl: './ranking.component.html',
-  styleUrl: './ranking.component.scss'
+  templateUrl: './admit.component.html',
+  styleUrl: './admit.component.scss'
 })
-export class RankingComponent {
+export class AdmitComponent {
   getRank : getImage [] = []; 
-  Number = 1;
-
   constructor(private http: HttpClient,private service: ServiceService ) {
     
   }
