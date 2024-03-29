@@ -2,23 +2,26 @@
 <div class="container">
     <div class="rank-header">
         <mat-icon>
-            emoji_events
+            contact_page
         </mat-icon>
-        <h1>Top 10 Rankings</h1>
+        <h1>User list</h1>
     </div>
     <div class="box">
-        <div *ngFor="let getRank of this.getRank; let i = index">
+        <div *ngFor="let admit_U of this.admit_U; let i = index">
             <div class="wrapper">
                 <div class="rank-number">
                     {{i+1}}
                 </div>
                 <div class="rank img">
-                    <img src="{{this.getRank.img}}" alt="">
+                    <img src="{{this.admit_U.profile}}" alt="">
+                </div>
+                <div>
+                    <h2>{{this.admit_U.name}}</h2>
                 </div>
                 <div class="rank-vote">
-                    {{this.getRank.vote_count}}
+                    {{this.admit_U.status}}
                     <mat-icon>
-                        favorite
+                        create_new_folder
                     </mat-icon>
                 </div> 
             </div>
