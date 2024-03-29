@@ -5,5 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class Constants {
   // public readonly API_ENDPOINT: string = 'http://localhost:3000';
-  public readonly API_ENDPOINT: string = 'https://node-project-ds4m.vercel.app/';
+  public readonly API_ENDPOINT: string = 'https://node-project-ds4m.vercel.app';
 }
