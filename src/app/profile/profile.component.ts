@@ -85,7 +85,7 @@ export class ProfileComponent {
              };
              console.log(body);
              console.log(JSON.stringify(body));
-             const UpProfile_P = await this.service.UpdateProfile(body,1);
+             const UpProfile_P = await this.service.UpdateProfile(body,this.getUid[0].uid);
              console.log(UpProfile_P);
              this.ngOnChanges({});
              
@@ -98,7 +98,7 @@ export class ProfileComponent {
       }   
   }
 
-  async btnClick(text: HTMLInputElement) {
+  async btnClick(text: HTMLInputElement) { 
     if(text.value.length > 0){
       console.log(text.value);
       const body = {
