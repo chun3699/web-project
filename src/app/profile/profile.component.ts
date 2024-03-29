@@ -98,7 +98,7 @@ export class ProfileComponent {
       }   
   }
 
-  async btnClick(text: HTMLInputElement) {
+  async btnClick(text: HTMLInputElement) { 
     if(text.value.length > 0){
       console.log(text.value);
       const body = {

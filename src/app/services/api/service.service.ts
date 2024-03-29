@@ -105,7 +105,7 @@ export class ServiceService {
   
   //updata profile <-
   public async UpdateProfile(body:any,uid:number,options?:any){
-    const url = `${this.constants.API_ENDPOINT}/login/profile/1`;
+    const url = `${this.constants.API_ENDPOINT}/login/profile/${uid}`;
     const response = await lastValueFrom(
       this.http.put(url,body)
     );
