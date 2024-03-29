@@ -30,8 +30,13 @@ export class LoginComponent {
         console.log("name: " + this.uuser[0].name);
         // this.service.uuser = this.uuser;
         this.service.setUserCredentials(user, pass);
+        if(this.uuser[0].status === 'admin'){
+          //ไปหน้าadmit
+          this.router.navigate(['/admit']);
+        }else{
         //ไปหน้า vote
         this.router.navigate(['/vote']);
+        }
 
       }else{console.log("error");
       alert("ไม่พบข้อมูลผู้ใช้");

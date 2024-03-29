@@ -12,7 +12,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { image } from '../../model/image';
 import { getImage } from '../../model/getImage';
 import { User } from '../../model/model_uid';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admit',
@@ -23,19 +24,41 @@ import { User } from '../../model/model_uid';
     MatButtonModule,
     MatIconModule,
     HeaderComponent,
+    MatToolbarModule
   ],
   templateUrl: './admit.component.html',
   styleUrl: './admit.component.scss'
 })
 export class AdmitComponent {
+  uuser: User[] = [];
   admit_U : User [] = []; 
-  constructor(private http: HttpClient,private service: ServiceService ) {
+  
+  constructor(private http: HttpClient,private service: ServiceService,private router: Router ) {
     
   }
   async ngOnInit(){
-    this.admit_U = await this.service.seleteAtUid();
-    console.log(this.admit_U);
-    console.log('Call Completed');
-    console.log('time ' + new Date());
+    const user = this.service.getUserCredentials();
+    if (user) {
+      this.uuser = await this.service.login(user.username, user.password);
+      this.admit_U = await this.service.seleteAtUid();
+      console.log(this.admit_U);
+      console.log('Call Completed');
+      console.log('time ' + new Date());
+    } else {
+      // ไม่พบข้อมูล user และ password ใน sessionStorage
+      this.router.navigate(['/vote']);
+    }
+
+    
   } 
+
+  logout(){
+    this.service.clearUserCredentials();
+    window.location.reload();
+    this.router.navigate(['/vote']);
+  }
+  
+  profile(){
+    this.router.navigate(['/profile']);
+  }
 }
