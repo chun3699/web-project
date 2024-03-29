@@ -41,7 +41,8 @@ export class VoteComponent {
   }
 
   async imagesuser(){
-    
+    this.userimg = [];
+
     for (let item of this.selectedImages) {
       let did = item.did;
       let userpic = await this.service.userpic(did);

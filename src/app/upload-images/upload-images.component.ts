@@ -14,7 +14,9 @@ import { getImage } from '../../model/getImage';
 import { User } from '../../model/model_uid';
 import { Router } from '@angular/router';
 
-const HOST: string = "http://localhost:3000";
+
+// const HOST: string = "http://localhost:3000";
+const HOST: string = "https://node-project-ds4m.vercel.app/";
 
 @Component({
   selector: 'app-upload-images',
@@ -136,7 +138,7 @@ export class UploadImagesComponent {
            const body = {
               img: imageUrlString,
            };
-          const change_Image = await this.service.changeImage(body,1);
+          const change_Image = await this.service.changeImage(body,did);
           console.log(change_Image);
           this.ngOnChanges({});
         } catch (error) {

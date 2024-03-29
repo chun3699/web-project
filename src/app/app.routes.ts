@@ -10,6 +10,7 @@ import { AdmitComponent } from './admit/admit.component';
 
 
 export const routes: Routes = [
+    {path: '',component:VoteComponent},
     {path:'login',component:LoginComponent},
     {path:'regis',component:RegistrationComponent},
     {path:'main',component:MainComponent},
