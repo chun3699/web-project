@@ -7,6 +7,9 @@
                     <img src="{{selectedImages.img}}" alt="" (click)="vote(selectedImages.did)">
                         <div class="scors">
                             <div style="width: 75px; height: 75px; border-radius: 50%; 
+                                    object-fit: cover;
+                                    background-size: cover;
+                                    background-position: center;
                                     background-image: url('{{userimg[i].profile}}');
                                     margin-right: 10px; margin-left: 10px;"></div>
                                     <h2>{{userimg[i].name}}</h2>
